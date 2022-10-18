@@ -41,7 +41,7 @@ public class Country {
 	///FOREIGN KEY
 	@ManyToOne
 	@JoinColumn(name = "region_id")
-	private Region region_id;
+	private Region region;
 	
 	
 	//GETTERS AND SETTERS
@@ -95,12 +95,12 @@ public class Country {
 		this.country_code3 = country_code3;
 	}
 
-	public Region getRegion_id() {
-		return region_id;
+	public Region getRegion() {
+		return region;
 	}
 
-	public void setRegion_id(Region region_id) {
-		this.region_id = region_id;
+	public void setRegion(Region region_id) {
+		this.region = region_id;
 	}
 	
 	

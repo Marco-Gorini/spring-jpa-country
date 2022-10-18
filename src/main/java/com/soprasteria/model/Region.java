@@ -1,5 +1,7 @@
 package com.soprasteria.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import net.bytebuddy.asm.Advice.Local;
@@ -29,8 +32,11 @@ public class Region {
 	///FOREIGN KEY
 	@ManyToOne
 	@JoinColumn(name = "continent_id")
-	private Continent continent_id;
+	private Continent continent;
 	
+	//LINK TO FOREIGN KEY
+	@OneToMany(mappedBy = "region")
+	private List<Country> countries;
 	
 	//GETTERS AND SETTERS
 
@@ -51,15 +57,21 @@ public class Region {
 		this.name = name;
 	}
 
-	public Continent getContinent_id() {
-		return continent_id;
+	public Continent getContinent() {
+		return continent;
 	}
 
-	public void setContinent_id(Continent continent_id) {
-		this.continent_id = continent_id;
+	public void setContinent(Continent continent_id) {
+		this.continent = continent_id;
 	}
-	
-	
+
+	public List<Country> getCountries() {
+		return countries;
+	}
+
+	public void setCountries(List<Country> countries) {
+		this.countries = countries;
+	}
 	
 	
 	
