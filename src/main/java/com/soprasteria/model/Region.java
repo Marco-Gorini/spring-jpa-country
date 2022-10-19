@@ -12,6 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import net.bytebuddy.asm.Advice.Local;
 
 
@@ -32,6 +35,7 @@ public class Region {
 	///FOREIGN KEY
 	@ManyToOne
 	@JoinColumn(name = "continent_id")
+	@JsonBackReference
 	private Continent continent;
 	
 	//LINK TO FOREIGN KEY

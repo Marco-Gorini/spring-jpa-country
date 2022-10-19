@@ -1,5 +1,7 @@
 package com.soprasteria.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import net.bytebuddy.asm.Advice.Local;
 
@@ -29,9 +34,9 @@ public class Country {
 	
 	private float area;
 	
-	@Column(nullable = false)
-	Local national_date;
-	
+//	@Column(nullable = false)
+//	LocalDate national_day;
+//	
 	@Column(unique = true)
 	private char [] country_code2 = new char[2];
 	
@@ -41,6 +46,7 @@ public class Country {
 	///FOREIGN KEY
 	@ManyToOne
 	@JoinColumn(name = "region_id")
+	@JsonBackReference
 	private Region region;
 	
 	
@@ -71,13 +77,13 @@ public class Country {
 		this.area = area;
 	}
 
-	public Local getNational_date() {
-		return national_date;
-	}
-
-	public void setNational_date(Local national_date) {
-		this.national_date = national_date;
-	}
+//	public LocalDate getNational_day() {
+//		return national_day;
+//	}
+//
+//	public void setNational_day(LocalDate national_date) {
+//		this.national_day = national_date;
+//	}
 
 	public char[] getCountry_code2() {
 		return country_code2;

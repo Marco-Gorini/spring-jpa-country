@@ -16,7 +16,7 @@ import com.soprasteria.repositories.ContinentRepository;
 import com.soprasteria.repositories.RegionRepository;
 
 @RestController
-@RequestMapping("/api")	
+@RequestMapping("/api/regions")	
 
 public class RegionController {
 	
@@ -26,13 +26,13 @@ public class RegionController {
 	@Autowired
 	private ContinentRepository continentRepository;
 	
-	@GetMapping("/allregions")
+	@GetMapping("")
 	public List<Region> getAllRegions(){
 		return (List<Region>) regionRepository.findAll();
 	}
 	
-	@GetMapping("/region/{regionid}")
-	public Region getCountryById(@PathVariable(value = "regiond") int idRegion) {
+	@GetMapping("/region/{region}")
+	public Region getCountryById(@PathVariable(value = "region") int idRegion) {
 		Optional<Region> regionById = regionRepository.findById(idRegion);
 		if(regionById.isPresent()) {
 			return regionById.get();
@@ -41,7 +41,7 @@ public class RegionController {
 			return new Region();
 		}
 	}
-	@GetMapping("/region/{continent}")
+	@GetMapping("/continent/{continent}")
 	public List<Region> getAllCountriesByRegion(@PathVariable(value = "continent") int idContinent){
 		Optional<Continent> continentById = continentRepository.findById(idContinent);
 		if(continentById.isPresent()) {
