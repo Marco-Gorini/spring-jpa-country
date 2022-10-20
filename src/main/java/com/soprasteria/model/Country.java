@@ -2,6 +2,7 @@ package com.soprasteria.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,8 @@ public class Country {
 	
 	@Id //Chiave primaria
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //Autoincremento
-	private int country_id;
+	@Column(name = "country_id")
+	private int idCountry;
 	
 	@Column(nullable = false)
 	private String name;
@@ -37,11 +39,11 @@ public class Country {
 //	@Column(nullable = false)
 //	LocalDate national_day;
 //	
-	@Column(unique = true)
-	private char [] country_code2 = new char[2];
+	@Column(name = "country_code2",unique = true)
+	private char [] countryCode2 = new char[2];
 	
-	@Column(unique = true)
-	private char [] country_code3 = new char[3];
+	@Column(name = "country_code3",unique = true)
+	private char [] countryCode3 = new char[3];
 	
 	///FOREIGN KEY
 	@ManyToOne
@@ -51,15 +53,6 @@ public class Country {
 	
 	
 	//GETTERS AND SETTERS
-
-	
-	public int getCountry_id() {
-		return country_id;
-	}
-
-	public void setCountry_id(int country_id) {
-		this.country_id = country_id;
-	}
 
 	public String getName() {
 		return name;
@@ -85,22 +78,6 @@ public class Country {
 //		this.national_day = national_date;
 //	}
 
-	public char[] getCountry_code2() {
-		return country_code2;
-	}
-
-	public void setCountry_code2(char[] country_code2) {
-		this.country_code2 = country_code2;
-	}
-
-	public char[] getCountry_code3() {
-		return country_code3;
-	}
-
-	public void setCountry_code3(char[] country_code3) {
-		this.country_code3 = country_code3;
-	}
-
 	public Region getRegion() {
 		return region;
 	}
@@ -108,6 +85,29 @@ public class Country {
 	public void setRegion(Region region_id) {
 		this.region = region_id;
 	}
-	
+
+	public int getIdCountry() {
+		return idCountry;
+	}
+
+	public void setIdCountry(int idCountry) {
+		this.idCountry = idCountry;
+	}
+
+	public char[] getCountryCode2() {
+		return countryCode2;
+	}
+
+	public void setCountryCode2(char[] countryCode2) {
+		this.countryCode2 = countryCode2;
+	}
+
+	public char[] getCountryCode3() {
+		return countryCode3;
+	}
+
+	public void setCountryCode3(char[] countryCode3) {
+		this.countryCode3 = countryCode3;
+	}
 	
 }
